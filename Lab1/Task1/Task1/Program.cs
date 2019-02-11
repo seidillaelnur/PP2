@@ -16,7 +16,7 @@ namespace Task1
 
             string[] Arr = s.Split();
 
-            List<int> list = new List<int>();
+            List<int> list = new List<int>();   //  создание вектора
 
             for (int i = 0; i < Arr.Length; i++)
             {
@@ -27,14 +27,14 @@ namespace Task1
                 {
                     if (int.Parse(Arr[i]) % j == 0) a = 1;
                 }
-                if (a == 0 && int.Parse(Arr[i]) != 1) list.Add(int.Parse(Arr[i]));
+                if (a == 0 && int.Parse(Arr[i]) != 1) list.Add(int.Parse(Arr[i]));   // проверка на простоту, если простое, то добавляем в вектор
                 a = 0;
             }
 
             Console.WriteLine(list.Count);
             for (int i=0; i<list.Count; i++)
             {
-                Console.Write(list[i] + " ");
+                Console.Write(list[i] + " ");  //  вывод вектора
             }
 
             Console.ReadKey();

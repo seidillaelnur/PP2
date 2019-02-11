@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{55310D4D-F8AB-405E-9636-F19B3F5B9FC8}</ProjectGuid>
+    <ProjectGuid>{D294A212-9D4A-4D5C-9570-E9D6A3C9E7B4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Task2</RootNamespace>
     <AssemblyName>Task2</AssemblyName>

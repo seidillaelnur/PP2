@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class Student
+    public class Student    //  новая функция Студент
     {
         string name, Id;
         int year;
@@ -43,10 +43,10 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Student s = new Student("Yelnur", "18BD110385");
-            Console.WriteLine(s);
+            Student s = new Student("Yelnur", "18BD110385");  //  мои данные
+            Console.WriteLine(s);    
             s.incYear();
-            Console.WriteLine(s);
+            Console.WriteLine(s);     // вывожу 4 раза (имя, Id, 
             s.incYear();
             Console.WriteLine(s);
             s.incYear();

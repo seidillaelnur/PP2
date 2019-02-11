@@ -13,10 +13,17 @@ namespace Task3
             Console.ReadLine();
             string s = Console.ReadLine();
             string[] Arr = s.Split();
+            List<string> list = new List<string>();  // создаю вектор
 
             for (int i = 0; i < Arr.Length; i++)
             {
-                Console.Write(Arr[i] + " " + Arr[i] + " ");
+                list.Add(Arr[i]);  //  добавляю в вектор массив 2 раза каждый
+                list.Add(Arr[i]);
+            }
+
+            for (int i=0; i<list.Count; i++)
+            {
+                Console.Write(list[i] + " ");  //  вывожу вектор
             }
             Console.ReadKey();
         }
