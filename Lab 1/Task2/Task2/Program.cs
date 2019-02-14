@@ -11,24 +11,24 @@ namespace Task2
         string name, Id;
         int year;
 
-        public Student(string name, string Id)
-        {
+        public Student(string name, string Id)  //  функция студент которая используется
+        {                                       //  в начале
             this.name = name;
             this.Id = Id;
             this.year = 1;
         }
 
-        public string getName()
+        public string getName()  //  имя остается не изменным
         {
             return this.name;
         }
 
-        public string getId()
+        public string getId()  //  Id остается не изменным
         {
             return this.Id;
         }
 
-        public void incYear()
+        public void incYear()   // увеличиваем год
         {
             this.year++;
         }
@@ -46,7 +46,7 @@ namespace Task2
             Student s = new Student("Yelnur", "18BD110385");  //  мои данные
             Console.WriteLine(s);    
             s.incYear();
-            Console.WriteLine(s);     // вывожу 4 раза (имя, Id, 
+            Console.WriteLine(s);     // вывожу 4 раза (имя, Id, год)
             s.incYear();
             Console.WriteLine(s);
             s.incYear();
