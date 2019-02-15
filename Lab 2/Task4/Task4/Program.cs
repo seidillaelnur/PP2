@@ -11,13 +11,14 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            string s = @"D:\PP2\Lab2\Task4\1\1.txt";    //  путь файла s (1)
-            string s1 = @"D:\PP2\Lab2\Task4\2\2.txt";   //  путь файла s1 (2)
-            if (!File.Exists(s))
+            string s = @"D:\PP2\Lab 2\Task4\1\1.txt";    //  путь файла s (1)
+            string s1 = @"D:\PP2\Lab 2\Task4\2\2.txt";   //  путь файла s1 (2)
+            File.Delete(@s1);
+            if (!File.Exists(s))                         //    поиск файла s
             {
-                using (StreamWriter sw = File.CreateText(s))   //    поиск файла s
+                using (StreamWriter sw = File.CreateText(s))  //  если нет файла, то выводит в файл 2
                 {
-                    sw.WriteLine("Done");
+                    sw.WriteLine("Файл 1.txt не найден");
                 }
             }
             File.Copy(@s, @s1);   //  копирование файла
