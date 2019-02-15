@@ -8,6 +8,7 @@ namespace Task1
         public int cursor;
         public string path;
         public int sz;
+        public int k = 0;
         public bool ok;
         DirectoryInfo directory = null;
         FileSystemInfo currentFs = null;
@@ -88,13 +89,35 @@ namespace Task1
                         sz--;
         }
 
+        public void openfile(FileSystemInfo fsi)
+        {
+            k = 1;
+
+            Console.BackgroundColor = ConsoleColor.White;   
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+
+            StreamReader sr = new StreamReader(fsi.FullName);   //  открытие файла  .txt
+            Console.WriteLine(sr.ReadToEnd());
+        }
+
+
         public void Start()
         {
             ConsoleKeyInfo consoleKey = Console.ReadKey();
             while (consoleKey.Key != ConsoleKey.Escape)  //  когда ESС, выходит
             {
+                if (k == 0)
+                {
+                    Show();
+                }
+                else
+                {
+                    openfile(currentFs);
+                }
+
                 CalcSz();
-                Show();
+
                 consoleKey = Console.ReadKey();
                 if (consoleKey.Key == ConsoleKey.UpArrow)  //  вверх и вниз
                     Up();
@@ -115,19 +138,66 @@ namespace Task1
                     if (currentFs.GetType() == typeof(DirectoryInfo))
                     {
                         cursor = 0;
-                        path = currentFs.FullName;
+                        path = path + "/" + currentFs.Name;
                     }
+                    else k = 1;
                 }
                 if (consoleKey.Key == ConsoleKey.Backspace)  //  возвращение назад
                 {
-                    cursor = 0;
-                    path = directory.Parent.FullName;
+                    if (k == 0)
+                    {
+                        cursor = 0;
+                        path = directory.Parent.FullName;
+                    }
+                    else k = 0;
+
                 }
                 if (consoleKey.Key == ConsoleKey.Delete)
                 {
+                    if (currentFs.GetType() == typeof(DirectoryInfo))
+                    {
+                        Directory.Delete(currentFs.FullName, true);
+                    }
+                    else
+                    {
+                        File.Delete(currentFs.FullName);
+                    }
+                    if (cursor != 0)
+                    {
+                        cursor--;
+                    }
 
                 }
-                
+                if (consoleKey.Key == ConsoleKey.S)
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Clear();
+                    Console.Write("Enter new name: ");
+                    string s = Console.ReadLine();
+                    Console.WriteLine("Press enter to confirm");
+
+                    if (consoleKey.Key == ConsoleKey.Enter)
+                    {
+                        string s1 = currentFs.FullName;
+
+                        if (currentFs.GetType() == typeof(FileInfo))
+                        {
+                            FileInfo f = new FileInfo(currentFs.FullName);
+                            string a = Path.Combine(f.DirectoryName, s);
+
+                            File.Move(f.FullName, a);
+                        }
+                        else
+                        {
+                            DirectoryInfo d = new DirectoryInfo(currentFs.FullName);
+                            string a = Path.Combine(d.Parent.FullName, s);
+                            Directory.Move(currentFs.FullName, a);
+                        }
+
+                    }
+
+                }
             }
         }
 
